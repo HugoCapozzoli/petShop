@@ -17,5 +17,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(8080, () => {
-    console.log('Server is running on port http://localhost:8080')
+    console.log('Servidor rodando na porta http://localhost:8080')
 })

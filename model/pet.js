@@ -4,7 +4,7 @@ let petSchema = new mongoose.Schema({
     name: { type: String, required: true},
     porte: { type: String, required: true},
     alergia: { type: String, required: true},
-    observacao: String,
+    observacao: {type: String}
 })
 
 module.exports = mongoose.model("Pet", petSchema);
