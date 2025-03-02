@@ -4,8 +4,8 @@ const createAgendamento = async (data, preferencia,pets ) => {
     const newAgendamento = new Agendamento ({
         data, 
         preferencia,
-        pets
-
+        pets,
+        
     });
 
     await newAgendamento.save();

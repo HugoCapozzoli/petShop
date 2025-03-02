@@ -1,10 +1,10 @@
 let mongoose = require("mongoose")
 
 let petSchema = new mongoose.Schema({
-    name: { type: string, required: true},
-    porte: { type: string, required: true},
-    alergia: { type: string, required: true},
-    observacao: { type: string},
+    name: { type: String, required: true},
+    porte: { type: String, required: true},
+    alergia: { type: String, required: true},
+    observacao: String,
 })
 
-module.exports = mongoose.model("pet", petSchema);
+module.exports = mongoose.model("Pet", petSchema);
