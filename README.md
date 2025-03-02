@@ -3,9 +3,8 @@
 ```mermaid
 classDiagram
     class Cliente {
-		    +String nome
+		+String nome
         +String local
-        +Agendamento agendamento
     }
 
     class Agendamento {
