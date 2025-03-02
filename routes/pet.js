@@ -2,10 +2,10 @@ const router = require('express').Router();
 const petController = require("../controller/petController")
 
 
-router.get("/pet", petController.getAllPets);
-router.post("/pet", petController.createPet);
-router.delete("/pet/:id", petController.deletePet);
-router.put("/pet/:id", petController.editPet);
+router.get("/pets", petController.getAllPets);
+router.post("/pets", petController.createPet);
+router.delete("/pets/:id", petController.deletePet);
+router.put("/pets/:id", petController.editPet);
 
 
 module.exports = router

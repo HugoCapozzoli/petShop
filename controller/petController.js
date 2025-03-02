@@ -1,17 +1,19 @@
-const petModel = require('../model/pet.js')
+const Pet = require('../model/pet.js'); 
 
 const createPet = async (req, res) => {
-    const { nome, porte, alergia, obsevacao } = req.body
-    const newPet = new petModel({ nome, porte, alergia, obsevacao });
+    const { nome, porte, alergia, observacao } = req.body; 
+    
+    const newPet = new Pet({ nome, porte, alergia, observacao });
     await newPet.save();
+    
     res.status(201).json({
         message: "Pet cadastrado com sucesso!",
         pet: newPet
     });
-}
+};
 
 const getAllPets = async (req, res) => {
-    const pets = await Pet.find();
+    const pets = await Pet.find(); 
     res.status(200).json(pets);
 };
 
@@ -19,6 +21,9 @@ const deletePet = async (req, res) => {
     const { id } = req.params;
 
     const pet = await Pet.findById(id);
+    if (!pet) {
+        return res.status(404).json({ message: "Pet não encontrado!" });
+    }
 
     await Pet.deleteOne({ _id: id });
     res.status(200).json({ message: "Pet removido com sucesso!" });
@@ -26,16 +31,18 @@ const deletePet = async (req, res) => {
 
 const editPet = async (req, res) => {
     const { id } = req.params;
-    const { name, porte, alergia, observacao } = req.body;
+    const { nome, porte, alergia, observacao } = req.body; 
 
-    let pet = await Pet.findByIdAndUpdate(id, { name, porte, alergia, observacao });
+    const pet = await Pet.findByIdAndUpdate(id, { nome, porte, alergia, observacao }, { new: true });
+
+    if (!pet) {
+        return res.status(404).json({ message: "Pet não encontrado!" });
+    }
 
     res.status(200).json({
         message: "Pet atualizado com sucesso!",
-        pet,
+        pet
     });
 };
-
-
 
 module.exports = { createPet, getAllPets, deletePet, editPet };

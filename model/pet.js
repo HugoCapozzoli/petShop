@@ -1,7 +1,7 @@
 let mongoose = require("mongoose")
 
 let petSchema = new mongoose.Schema({
-    name: { type: String, required: true},
+    nome: { type: String, required: true},
     porte: { type: String, required: true},
     alergia: { type: String, required: true},
     observacao: {type: String}
