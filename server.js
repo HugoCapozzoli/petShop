@@ -12,6 +12,9 @@ app.use("/api", cliente)
 app.use("/api", servico)
 app.use("/api", agendamento)
 app.use("/api", petRouter)
+app.get('/', (req, res) => {
+    res.send("Oh macho, a API começa no /api !! (suspira)")
+})
 
 app.listen(8080, () => {
     console.log('Server is running on port http://localhost:8080')
