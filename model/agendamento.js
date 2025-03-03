@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const agendamento = new mongoose.Schema({
   data: {
@@ -21,4 +21,4 @@ const agendamento = new mongoose.Schema({
 });
 
 // Especifica que o modelo deve usar a coleção "formdatamodels"
-export default mongoose.model('Agendamento', agendamento);
+module.exports = mongoose.model('Agendamento', agendamento);

@@ -1,7 +1,7 @@
 let mongoose = require("mongoose")
 
 let servicoSchema = new mongoose.Schema({
-    name: { type: string, required: true},
+    nome: { type: String, required: true},
     valor: { type: Number, required: true},
     duracaoMaxMinutos: Number,
 })
