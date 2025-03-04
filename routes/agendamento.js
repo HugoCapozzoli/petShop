@@ -1,7 +1,8 @@
-const router = require('express').Router();
-const controller = require('../controller/agendamentoController.js')
+const express = require('express')
+const router = express.Router();
+const agendamentoController = require('../controller/agendamentoController.js')
 
-router.route('/agendamento')
-    .post(controller.createAgendamento)
+router.post(agendamentoController.createAgendamento);
+router.get('/agendamentos', agendamentoController.getAllAgendamentos);
 
 module.exports = router

@@ -1,23 +1,23 @@
 const app = require('express')();
-const bodyParser = require('body-parser')
-require('./db/db.js')
+const bodyParser = require('body-parser');
+require('./db/db.js');
 
-const petRouter = require('./routes/pet.js')
-const agendamento = require('./routes/agendamento.js')
-const cliente = require('./routes/cliente.js')
-const servico = require('./routes/servico.js');
+const petRoutes = require('./routes/pet.js')
+const agendamentoRoutes = require('./routes/agendamento.js')
+const clienteRoutes = require('./routes/cliente.js')
+const servicoRoutes = require('./routes/servico.js');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js');
 const resolvers = require('./revolvers/revolvers.js');
 
 app.use(bodyParser.json())
-app.use("/api", cliente)
-app.use("/api", servico)
-app.use("/api", agendamento)
-app.use("/api", petRouter)
+app.use("/api", clienteRoutes);
+app.use("/api", servicoRoutes);
+app.use("/api", agendamentoRoutes);
+app.use("/api", petRoutes);
 app.get('/', (req, res) => {
-    res.send("Oh macho, a API começa no /api !! (suspira)")
-})
+    res.send("Oh macho, a API começa no /api !! (suspira)");
+});
 
 /* O schema eh o coracao do graphql, porem ha um meio de gerar automaticante
 porem esse codigo eh uma solucao simples */
@@ -25,8 +25,8 @@ app.use("/graphql", graphqlHTTP({
     schema: schema,
     rootValue: resolvers,
     graphiql: true      // telinha para testar
-}))
+}));
 
 app.listen(8080, () => {
     console.log('Servidor rodando na porta http://localhost:8080')
-})
+});
