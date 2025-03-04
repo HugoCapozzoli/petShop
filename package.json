@@ -16,7 +16,7 @@
     "graphql": "^15.10.1",
     "mongoose": "^8.11.0"
   },
-  "description": "",
+  "description": "```json\r \"dependencies\": {\r     \"body-parser\": \"^1.20.3\",\r     \"express\": \"^4.21.2\",\r     \"express-graphql\": \"^0.12.0\",\r     \"graphql\": \"^15.10.1\",\r     \"mongoose\": \"^8.11.0\"\r },\r \"devDependencies\": {\r     \"nodemon\": \"^3.1.9\"\r }\r ```",
   "devDependencies": {
     "nodemon": "^3.1.9"
   }
