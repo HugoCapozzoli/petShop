@@ -4,11 +4,11 @@ const controller = require('../controller/clienteController');
 const router = express.Router();
 
 router.route("/cliente")
-    .post(controller.createCliente)  // Criar cliente
-    .get(controller.getAllClientes); // Buscar todos os clientes
+    .post(controller.createCliente)  
+    .get(controller.getAllClientes); 
 
 router.route("/cliente/:id")
-    .put(controller.editCliente)     // Atualizar cliente
-    .delete(controller.deleteCliente); // Deletar cliente
+    .put(controller.editCliente)     
+    .delete(controller.deleteCliente);
 
 module.exports = router;
