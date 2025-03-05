@@ -1,15 +1,19 @@
 const Pet = require('../model/pet.js'); 
 
 const createPet = async (req, res) => {
-    const { nome, porte, alergia, observacao } = req.body; 
-    
-    const newPet = new Pet({ nome, porte, alergia, observacao });
-    await newPet.save();
-    
-    res.status(201).json({
-        message: "Pet cadastrado com sucesso!",
-        pet: newPet
-    });
+    try {
+        const { nome, porte, alergia, observacao } = req.body; 
+
+        const newPet = new Pet({ nome, porte, alergia, observacao });
+        await newPet.save();
+
+        res.status(201).json({
+            message: "Pet cadastrado com sucesso!",
+            pet: newPet
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao cadastrar o pet.", error });
+    }
 };
 
 const getAllPets = async (req, res) => {
