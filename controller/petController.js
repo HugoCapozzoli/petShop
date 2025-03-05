@@ -3,10 +3,10 @@ const Pet = require('../model/pet.js');
 const createPet = async (req, res) => {
     try {
         const { nome, porte, alergia, observacao } = req.body; 
-        
+
         const newPet = new Pet({ nome, porte, alergia, observacao });
         await newPet.save();
-        
+
         res.status(201).json({
             message: "Pet cadastrado com sucesso!",
             pet: newPet
