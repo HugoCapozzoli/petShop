@@ -5,18 +5,18 @@ const database = 'petShop';      // COLOQUE O NOME DO SEU BANCO DE DADOS
 
 class Database {
   constructor() {
-    this._connect()
+    this._connect();
   }
 
   _connect() {
     mongoose.connect(`mongodb://${server}/${database}`)
-      .then(() => {
-        console.log('Database connection successful')
-      })
-      .catch(err => {
-        console.error('Database connection error')
-      })
+    .then(() => {
+      console.log('Database connection successful');
+    })
+    .catch(err => {
+      console.error('Database connection error', err); 
+    });
   }
 }
 
-module.exports = new Database()
+module.exports = new Database();
