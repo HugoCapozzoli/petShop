@@ -11,7 +11,7 @@ const WithAuth = (req, res, next) => {
     jwt.verify(token, secret, (err, decoded) => {
         if (err) return res.status(401).json({ error: 'Token inválido' });
 
-        req.user = decoded;
+        req.email = decoded.email;
         next();
     });
 };

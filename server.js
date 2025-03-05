@@ -3,15 +3,17 @@ const app = express();
 const bodyParser = require('body-parser');
 require('./db/db.js');
 
-const petRoutes = require('./routes/pet.js')
-const agendamentoRoutes = require('./routes/agendamento.js')
-const clienteRoutes = require('./routes/cliente.js')
+const loginRoutes = require('./routes/auth.js');
+const petRoutes = require('./routes/pet.js');
+const agendamentoRoutes = require('./routes/agendamento.js');
+const clienteRoutes = require('./routes/cliente.js');
 const servicoRoutes = require('./routes/servico.js');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js');
 const resolvers = require('./revolvers/revolvers.js');
 
 app.use(bodyParser.json())
+app.use("/api", loginRoutes);
 app.use("/api", clienteRoutes);
 app.use("/api", servicoRoutes);
 app.use("/api", agendamentoRoutes);

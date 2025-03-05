@@ -1,10 +1,10 @@
 const clienteModel = require('../model/cliente');
 
 const createCliente = async (req, res) => {
-    const { nome, local } = req.body;
+    const { nome, email, password, local } = req.body;
     
     try {
-        const novoCliente = new clienteModel({ nome, local });
+        const novoCliente = new clienteModel({ nome, email, password, local });
         await novoCliente.save();
 
         res.status(201).json({
@@ -43,10 +43,10 @@ const deleteCliente = async (req, res) => {
 
 const editCliente = async (req, res) => {
     const { id } = req.params;
-    const { nome, local } = req.body;
+    const { nome, email, password, local } = req.body;
 
     try {
-        const cliente = await clienteModel.findByIdAndUpdate(id, { nome, local }, { new: true });
+        const cliente = await clienteModel.findByIdAndUpdate(id, { nome, email, password, local }, { new: true });
 
         if (!cliente) {
             return res.status(404).json({ message: "Cliente não encontrado!" });
