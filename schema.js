@@ -32,14 +32,18 @@ const schema = buildSchema(`
     }
 
     type Query {
-        servico(id: String!): Servico
-        servicos: [Servico]
         agendamentos: [Agendamento]
         agendamento(id: String!): Agendamento
     }
 
     type Mutation {
-        createServico(nome: String!, valor: Float!, duracao: String): Servico
+        createAgendamento(
+            data: String!,
+            preferencia: String,
+            clienteId: String,
+            petsId: [String],
+            servicoId: String
+        ): Agendamento!
     }
 `)
 
