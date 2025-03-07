@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const WithAuth = require('./middleware/auth.js');
 require('./db/db.js');
 
 const loginRoutes = require('./routes/auth.js');
@@ -12,7 +13,9 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js');
 const resolvers = require('./revolvers/revolvers.js');
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(WithAuth);
+
 app.use("/api", loginRoutes);
 app.use("/api", clienteRoutes);
 app.use("/api", servicoRoutes);
