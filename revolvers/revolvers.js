@@ -20,6 +20,9 @@ const pesquisaById = async (agendamento) => {
 }
 
 const resolvers = {
+    deleteAgendamento: async ({ id }) => {
+        await agendamentoModel.findByIdAndDelete(id)
+    },
     updateAgendamento: async ({ id, data, preferencia, clienteId, petsId, servicoId }) => {
         // verificar se os campos de cliente, pets e servicos tem os ids corretos
         const agendamentoSaved = await agendamentoModel.findByIdAndUpdate(

@@ -44,6 +44,14 @@ const schema = buildSchema(`
             petsId: [String],
             servicoId: String
         ): Agendamento!
+        deleteAgendamento(id: String!)
+        updateAgendamento(
+            data: String!,
+            preferencia: String,
+            clienteId: String,
+            petsId: [String],
+            servicoId: String
+        ): Agendamento!
     }
 `)
 
