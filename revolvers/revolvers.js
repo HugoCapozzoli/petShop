@@ -23,6 +23,7 @@ const resolvers = {
     deleteAgendamento: async ({ id }) => {
         await agendamentoModel.findByIdAndDelete(id)
     },
+	// estar ocorrendo um erro aqui, relacionado a algum ':'
     updateAgendamento: async ({ id, data, preferencia, clienteId, petsId, servicoId }) => {
         // verificar se os campos de cliente, pets e servicos tem os ids corretos
         const agendamentoSaved = await agendamentoModel.findByIdAndUpdate(
@@ -36,8 +37,8 @@ const resolvers = {
     createAgendamento: async ({ data, preferencia, clienteId, petsId, servicoId }) => {
         // verificar se os campos de cliente, pets e servicos tem os ids corretos
         const agendamentoNew = await agendamentoModel({
-            data,
-            preferencia,
+            data: data,
+            preferencia: preferencia,
             cliente: clienteId,
             pets: petsId,
             servico: servicoId

@@ -3,8 +3,12 @@ const express = require('express');
 const router = express.Router(); 
 const servicoController = require('../controller/servicoController.js');
 
-// falta buscar, deletar e atualizar o cliente
+// atualizado, falta testar
 
 router.post('/servico', servicoController.createServico);
+router.get('/servico', servicoController.getAllServicos);
+router.get('/servico/:id', servicoController.getServicoById);
+router.put('/servico/:id', servicoController.updateServico);
+router.delete('/servico/:id', servicoController.deleteServico);
 
 module.exports = router; 
