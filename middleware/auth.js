@@ -7,7 +7,7 @@ const WithAuth = (req, res, next) => {
     const {url, method} = req;
 
     const free = {
-        method: 'POST', urls: ['/login', '/register']
+        method: 'POST', urls: ['/api/login', '/api/register']
     }
 
     if (method === free.method && free.urls.includes(url)) {

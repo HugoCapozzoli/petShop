@@ -22,13 +22,15 @@ const login = async (req, res) => {
     try {
         let cliente = await Cliente.findOne({ email });
         if (!cliente) return res.status(401).json({ error: 'Email ou senha incorretos' });
+            console.log(cliente);
 
-        user.isCorrectPassword(password, (err, same) => {
+        cliente.isCorrectPassword(password, (err, same) => {
             if (!same) return res.status(401).json({ error: 'Email ou senha incorretos' });
+            console.log(cliente);
 
             // Isso aqui vai gerar o token
             const token = jwt.sign({ email }, secret, { expiresIn: '30d' });
-            res.json({ user, token });
+            res.json({cliente, token });
         });
     } catch (error) {
         res.status(500).json({ error: 'Erro interno, tente novamente' });
