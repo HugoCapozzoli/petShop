@@ -3,8 +3,8 @@ const servicoModel = require('../model/servico.js');
 // Criar um novo serviço
 const createServico = async (req, res) => {
     try {
-        const { name, valor, duracaoMaxMinutos } = req.body;
-        const newServico = new servicoModel({ name, valor, duracaoMaxMinutos });
+        const { nome, valor, duracaoMaxMinutos } = req.body;
+        const newServico = new servicoModel({ nome, valor, duracaoMaxMinutos });
         await newServico.save();
         res.status(201).json(newServico);
     } catch (err) {
@@ -39,7 +39,7 @@ const updateServico = async (req, res) => {
         const { name, valor, duracaoMaxMinutos } = req.body;
         const servico = await servicoModel.findByIdAndUpdate(
             req.params.id,
-            { name, valor, duracaoMaxMinutos },
+            { nome, valor, duracaoMaxMinutos },
             { new: true } //* doc atualizado retorno
         );
         if (!servico) return res.status(404).json({ message: 'Serviço não encontrado' });
