@@ -5,7 +5,8 @@ let cliente = new mongoose.Schema({
     nome: { type: String, required: true},
     email: { type: String, required: true, unique: true},
     password: { type: String, required: true},
-    local: {type: String}
+    local: {type: String},
+    agendamento: {type: mongoose.Types.ObjectId, ref: "Agendamento"}
 });
 
 // Usado para hashficar a senha antes mesmo do cliente ser salvo

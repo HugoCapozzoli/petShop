@@ -8,6 +8,7 @@ router.route("/cliente")
 
 router.route("/cliente/:id")
     .put(controller.editCliente)     
-    .delete(controller.deleteCliente);
+    .delete(controller.deleteCliente)
+    .patch(controller.setAgendamento);
 
 module.exports = router;

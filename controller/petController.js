@@ -1,8 +1,9 @@
-const Pet = require('../model/pet.js'); 
+const pet = require('../model/pet.js');
+const Pet = require('../model/pet.js');
 
 const createPet = async (req, res) => {
     try {
-        const { nome, porte, alergia, observacao } = req.body; 
+        const { nome, porte, alergia, observacao } = req.body;
 
         const newPet = new Pet({ nome, porte, alergia, observacao });
         await newPet.save();
@@ -18,7 +19,7 @@ const createPet = async (req, res) => {
 
 
 const getAllPets = async (req, res) => {
-    const pets = await Pet.find(); 
+    const pets = await Pet.find();
     res.status(200).json(pets);
 };
 
@@ -36,7 +37,7 @@ const deletePet = async (req, res) => {
 
 const editPet = async (req, res) => {
     const { id } = req.params;
-    const { nome, porte, alergia, observacao } = req.body; 
+    const { nome, porte, alergia, observacao } = req.body;
 
     const pet = await Pet.findByIdAndUpdate(id, { nome, porte, alergia, observacao }, { new: true });
 
@@ -50,4 +51,19 @@ const editPet = async (req, res) => {
     });
 };
 
-module.exports = { createPet, getAllPets, deletePet, editPet };
+const setAgendamento = async (req, res) => {
+    const { id } = req.params
+    const { agendamentoId } = req.body
+
+
+    try {
+        const petUpdated = await pet.findByIdAndUpdate(id, { agendamento: agendamentoId }, { new: true });
+
+        res.status(200).json({ petUpdated })
+    } catch (e) {
+        res.status(500).json({ message: "Erro ao setar agendamento" });
+    }
+
+}
+
+module.exports = { createPet, getAllPets, deletePet, editPet, setAgendamento };

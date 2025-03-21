@@ -82,10 +82,25 @@ const deleteServico = async (req, res) => {
     }
 };
 
+const setAgendamento = async (req, res) => {
+    const { id } = req.params
+    const { agendamentoId } = req.body
+
+    try {
+        const servico = await servicoModel.findByIdAndUpdate(id, { agendamento: agendamentoId }, { new: true });
+
+        res.status(200).json({ servico })
+    }catch (e) {
+        res.status(500).json({ message: "Erro ao setar agendamento" }); 
+    }
+
+}
+
 module.exports = {
     createServico,
     getAllServicos,
     getServicoById,
     updateServico,
-    deleteServico
+    deleteServico,
+    setAgendamento
 };

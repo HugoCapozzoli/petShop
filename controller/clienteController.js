@@ -61,4 +61,19 @@ const editCliente = async (req, res) => {
     }
 };
 
-module.exports = {createCliente, getAllClientes, deleteCliente, editCliente};
+const setAgendamento = async (req, res) => {
+    const { id } = req.params
+    const { agendamentoId } = req.body
+
+
+    try {
+        const cliente = await clienteModel.findByIdAndUpdate(id, { agendamento: agendamentoId }, { new: true });
+
+        res.status(200).json({ cliente })
+    }catch (e) {
+        res.status(500).json({ message: "Erro ao setar agendamento" }); 
+    }
+
+}
+
+module.exports = {createCliente, getAllClientes, deleteCliente, editCliente, setAgendamento};

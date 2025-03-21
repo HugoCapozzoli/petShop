@@ -10,5 +10,6 @@ router.get('/servico', servicoController.getAllServicos);
 router.get('/servico/:id', servicoController.getServicoById);
 router.put('/servico/:id', servicoController.updateServico);
 router.delete('/servico/:id', servicoController.deleteServico);
+router.patch('/servico/:id', servicoController.setAgendamento);
 
 module.exports = router; 
