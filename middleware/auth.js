@@ -13,12 +13,13 @@ const WithAuth = (req, res, next) => {
         { method: 'OPTIONS', urls: ['/api/login', '/api/register'] }
     ]
 
-    free.some(public => {
-        if (method === public.method && public.urls.includes(url)) {
-            console.log("Luiz liberou")
-            return next();
-        }
-    })
+    const publiced = free.some(public => 
+        (method === public.method && public.urls.includes(url))
+    )
+
+    if (publiced) {
+        return next();
+    }
 
     const token = req.headers["authorization"]?.split(" ")[1];
 

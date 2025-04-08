@@ -23,11 +23,7 @@ const login = async (req, res) => {
     console.log("---->", email, password)
 
     try {
-        console.debug("Entrou no try")
         let cliente = await Cliente.findOne({ email });
-        console.debug("Entrou no try")
-
-        console.log(cliente);
 
         if (cliente == null) {
             return res.status(401).json({ error: 'Email ou senha incorretos' });
