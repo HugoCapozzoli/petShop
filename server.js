@@ -16,7 +16,7 @@ const resolvers = require('./revolvers/revolvers.js');
 
 app.use(bodyParser.json());
 app.use(cors())
-app.use(WithAuth);
+//app.use(WithAuth);
 
 app.use("/api", loginRoutes);
 app.use("/api", clienteRoutes);

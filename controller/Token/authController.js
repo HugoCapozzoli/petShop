@@ -28,8 +28,6 @@ const login = async (req, res) => {
         if (cliente == null) {
             return res.status(401).json({ error: 'Email ou senha incorretos' });
         }
-        console.debug("Entrou no try")
-
 
         cliente.isCorrectPassword(password, (err, same) => {
             if (!same) return res.status(401).json({ error: 'Email ou senha incorretos' });
