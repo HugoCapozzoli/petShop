@@ -15,6 +15,10 @@ class Database {
     })
     .catch(err => {
       console.error('Database connection error', err); 
+      mongoose.connect(`mongodb+srv://gigliarlygonzaga:Marcelinog16$@cluster0.qlvnssy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+      .then(() => {
+        console.log("Conexao online bem sucessedida")
+      })
     });
   }
 }

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const WithAuth = require('./middleware/auth.js');
+const cors = require('cors')
 require('./db/db.js');
 
 const loginRoutes = require('./routes/auth.js');
@@ -14,6 +15,7 @@ const schema = require('./schema.js');
 const resolvers = require('./revolvers/revolvers.js');
 
 app.use(bodyParser.json());
+app.use(cors())
 app.use(WithAuth);
 
 app.use("/api", loginRoutes);

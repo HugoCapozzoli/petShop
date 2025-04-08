@@ -4,18 +4,24 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
 const WithAuth = (req, res, next) => {
-    const {url, method} = req;
+    const { url, method } = req;
 
-    const free = {
-        method: 'POST', urls: ['/api/login', '/api/register']
-    }
+    console.log(url, method)
 
-    if (method === free.method && free.urls.includes(url)) {
-        return next();
-    }
+    const free = [
+        { method: 'POST', urls: ['/api/login', '/api/register'] },
+        { method: 'OPTIONS', urls: ['/api/login', '/api/register'] }
+    ]
+
+    free.some(public => {
+        if (method === public.method && public.urls.includes(url)) {
+            console.log("Luiz liberou")
+            return next();
+        }
+    })
 
     const token = req.headers["authorization"]?.split(" ")[1];
-    
+
     if (!token) return res.status(401).json({ error: 'Sem token, acesso negado' });
 
     jwt.verify(token, secret, (err, decoded) => {
