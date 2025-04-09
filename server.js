@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const WithAuth = require('./middleware/auth.js');
+// const WithAuth = require('./middleware/auth.js');
 const cors = require('cors')
 require('./db/db.js');
 
